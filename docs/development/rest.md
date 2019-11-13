@@ -241,7 +241,7 @@ Send Message endpoint is a `POST` function to `{{host}}/queue/receive` where `ho
    "Channel":"testing_queue_channel",
    "MaxNumberOfMessages":10,
    "WaitTimeSeconds":5,
-   "IsPeak":false
+   "IsPeek":false
 }
 ```
 Where:
@@ -253,7 +253,7 @@ Where:
 | Channel         | string        | Yes      | Channel sender address                                                                                        |
 | MaxNumberOfMessages        | integer        | Yes       | Set how many messages to pull from the queue |
 | WaitTimeSeconds            | integer | Yes      | Set  how many seconds to wait for the messages to be pulled                                                                                |
-| IsPeak         | bool           | No      | Set to false as we pulling out the messages from the queue                                                       |
+| IsPeek         | bool           | No      | Set to false as we pulling out the messages from the queue                                                       |
 
 As a Response from `POST` message:
 
@@ -352,8 +352,8 @@ Where Data field
 | MessagesExpired         | integer        |  how many expired messages pulled from the queue                                                                     |
 
 
-### Peak Messages
-Send a Receive Message request to peak batch of messages into the queue.
+### Peek Messages
+Send a Receive Message request to peek batch of messages into the queue.
 
 Send Message endpoint is a `POST` function to `{{host}}/queue/receive` where `host` is the KubeMQ REST interface address.
 `POST` Send message JSON structure:
@@ -365,7 +365,7 @@ Send Message endpoint is a `POST` function to `{{host}}/queue/receive` where `ho
    "Channel":"testing_queue_channel",
    "MaxNumberOfMessages":10,
    "WaitTimeSeconds":5,
-   "IsPeak":true
+   "IsPeek":true
 }
 ```
 Where:
@@ -375,9 +375,9 @@ Where:
 | RequestID       | string        | Yes      | request id can set by the sender, if no RequestID is set KubeMQ will generate a UUID type value for RequestID |
 | ClientID        | string        | Yes      | Sender Client ID                                                                                              |
 | Channel         | string        | Yes      | Channel sender address                                                                                        |
-| MaxNumberOfMessages        | integer        | Yes       | Set how many messages to peak from the queue |
-| WaitTimeSeconds            | integer | Yes      | Set  how many seconds to wait for the messages to be peaked                                                                                |
-| IsPeak         | bool           | No      | Set to true as we peaking the messages into the queue                                                       |
+| MaxNumberOfMessages        | integer        | Yes       | Set how many messages to peek from the queue |
+| WaitTimeSeconds            | integer | Yes      | Set  how many seconds to wait for the messages to be peeked                                                                                |
+| IsPeek         | bool           | No      | Set to true as we peeking the messages into the queue                                                       |
 
 As a Response from `POST` message:
 
@@ -463,7 +463,7 @@ As a Response from `POST` message:
       ],
       "MessagesReceived": 4,
       "MessagesExpired": 1,
-      "IsPeak": true
+      "IsPeek": true
    }
 }
 ```
@@ -475,7 +475,7 @@ Where Data field
 | Messages        | array of queue messages        |  contains an array of pulled messages  |
 | MessagesReceived         | integer        |  how many valid messages pulled from the queue                                                                     |
 | MessagesExpired         | integer        |  how many expired messages pulled from the queue                                                                     |
-| IsPeak         | bool        |  indicate peak request                                                                  |
+| IsPeek         | bool        |  indicate peek request                                                                  |
 
 
 ### Ack All Messages
